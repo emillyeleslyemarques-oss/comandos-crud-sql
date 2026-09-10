@@ -154,3 +154,65 @@ ORDER BY preco DESC, nome ASC;
 ```
 
 ## Funções de agregação 
+
+Funções de agregação realizam cálculos ou processos em registros de um resultado.
+
+Entre as principais
+
+-`COUNT()` -> conta registros
+-`SUM()` -> soma valores
+-`AVG()` -> calcula a média de valores
+-`MIN()` -> encontra o valor menor
+-`MAX()` -> encontra o valor maior
+-`ROUND` -> arredonda valores e define casas decimais
+
+### COUNT
+
+Contando quantos registros existem na tabela produtos
+
+```sql
+SELECT COUNT(*) AS total FROM produtos;
+```
+
+### SUM
+
+Somar quantidade de todos os produtos da tabela.
+
+```sql
+SELECT SUM(quantidade) AS "Quantidade total" FROM produtos;
+```
+
+
+### AVG
+
+Calcular a media dos precos dos produtos
+
+```sql
+SELECT AVG(preco) AS "Média dos Preços" FROM produtos;
+```
+
+### MIN
+
+Retornar o menor preço existente
+
+```sql
+SELECT MIN(preco) AS menor_preco FROM produtos;
+```
+
+### MAX
+
+Retornar o maior preço existente
+
+```sql
+SELECT MAX(preco) AS maior_preco FROM produtos;
+```
+
+### Combinando agregações
+
+```sql
+SELECT COUNT(*) AS quantidade_produtos,
+       MIN(preco) AS menor_preco,
+       MAX(preco) AS maior_preco,
+       ROUND(AVG(preco), 2) AS preco_medio
+FROM produtos;
+```
