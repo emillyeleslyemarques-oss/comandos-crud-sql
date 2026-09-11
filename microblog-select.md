@@ -7,7 +7,7 @@ SELECT * FROM usuarios;
 
 
 ```sql
-SELECT nome, email, senha FROM usuarios;
+SELECT nome, email, FROM usuarios;
 ```
 
 ## categorias
@@ -80,6 +80,18 @@ SELECT nome
 FROM categorias
 WHERE nome
 LIKE '%d%'
+```
+
+```sql
+SELECT id, titulo, data
+FROM noticias
+ORDER BY data DESC;
+```
+
+```sql
+SELECT id, nome, email
+FROM usuarios
+ORDER BY nome ASC;
 ```
 
 ```sql

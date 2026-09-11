@@ -279,3 +279,40 @@ FROM produtos
 1. WHERE
 2. GROUP BY/ HAVING
 3. ORDER BY
+
+---
+
+## JOIN (JUNÇÃO)
+
+Até agora consultamos principalmente dados existentes em **uma unica tabela**.
+
+Porém, nosso banco possui informções relacionadas **entre varias tabelas.**
+
+Por exemplo:
+
+- `produtos ` possui `fornecedor_id`
+- `forncedores` possui o nome dos fornecedores
+
+O `JOIN` permite **combinar informações de tabelas relacionadas** na consulta com `SELECT`.
+
+### INNER JOIN entre produtos e fornecedores
+
+Exibir o nome dos fornecedores de cada produto:
+
+````sql
+SELECT
+    -- tabela.coluna as apelido 
+    -- especialmente para colunas com o mesmo nome
+    produtos.nome AS produto,
+    produtos.preco,
+    fornecedores.nome AS fornecedor
+FROM produtos
+
+-- Fazendo a junção entre as tabelas 
+-- Neste caso, produtos com fornecedores
+INNER JOIN fornecedores
+
+-- Definindo a condição de CRUZAMENTO entre as tabelas
+  ON produtos.fornecedor_id = fornecedores.id;
+
+```
