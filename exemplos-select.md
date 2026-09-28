@@ -299,7 +299,7 @@ O `JOIN` permite **combinar informações de tabelas relacionadas** na consulta 
 
 Exibir o nome dos fornecedores de cada produto:
 
-````sql
+```sql
 SELECT
     -- tabela.coluna as apelido 
     -- especialmente para colunas com o mesmo nome
@@ -314,5 +314,61 @@ INNER JOIN fornecedores
 
 -- Definindo a condição de CRUZAMENTO entre as tabelas
   ON produtos.fornecedor_id = fornecedores.id;
+```
+
+### Apelidos (alias) para tabelas
+
+podemos usar apelidos para tornar consultas maiores mais compactas.
+
+```sql
+SELECT
+    p.nome AS produto,
+    p.preco,
+    f.nome AS fornecedor
+FROM produtos AS p
+INNER JOIN fornecedores AS f
+    ON p.fornecedor_id = f.id;
+```
+  Neste exemplo:
+     - `p` representa a tabela `produtos`;
+     - `f` representa a tabela `fornecedores`;
+
+**Dica:**Versão ainda mais compacta omitindo o `AS`:
+
+```sql
+SELECT
+    p.nome  produto,
+    p.preco,
+    f.nome fornecedor
+FROM produtos  p
+INNER JOIN fornecedores  f
+    ON p.fornecedor_id = f.id;
+```
+
+### JOIN com filtro
+
+Exibir somente os produtos com preco superior a mil reais mostrando o nome de seus fornecedores
+
+```sql
+SELECT 
+    produtos.nome AS produto,
+    produtos.preco,
+    fornecedores.nome AS fornecedor
+FROM produtos INNER JOIN fornecedores
+  ON produtos.fornecedor_id = fornecedores.id
+WHERE produtos.preco > 1000;
+```
+
+### Desafio: JOIN envolvendo 3 tabelas
+
+Objetivo: descobrir qual produto é vendido em qual loja e qual é seu estoque naquela loja.
+
+```sql 
+SELECT 
+    lojas.nome AS loja,
+    produtos.nome AS produto,
+    lojas_produto.quantidade AS estoque
+ FROM estoque INNER JOIN produtos
+ ON 
 
 ```
